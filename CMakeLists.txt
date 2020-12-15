@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.15)
 
-set(PROJECT "Translator")
+set(PROJECT "TopDownAnalyzer")
 
 project(${PROJECT})
 
@@ -10,7 +10,7 @@ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 
 # Find Qt5
-find_package(Qt5 REQUIRED COMPONENTS Widgets)
+find_package(Qt5 REQUIRED COMPONENTS Widgets Core)
 
 if(NOT DEFINED HEADERS)
     file(GLOB HEADERS ${CMAKE_CURRENT_SOURCE_DIR}/src/*.h)
@@ -37,4 +37,5 @@ add_executable(${PROJECT}
 
 target_link_libraries(${PROJECT}
     Qt5::Widgets
+    Qt5::Core
 )
