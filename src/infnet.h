@@ -5,9 +5,9 @@
 
 struct InfNet final
 {
-    QChar m_net;
-    int m_countAlternative;
-    int m_firstNumberAlternative;
+    QChar net;
+    int countAlternative;
+    int firstNumberAlternative;
 };
 
 #endif // INFNET_H

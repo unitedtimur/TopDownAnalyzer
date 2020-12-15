@@ -17,6 +17,26 @@ QString Grammar::grammar() const
     return result;
 }
 
+QString Grammar::lr() const
+{
+    return m_lr;
+}
+
+QVector<QString> Grammar::rr() const
+{
+    return m_rr;
+}
+
+QString Grammar::t() const
+{
+    return m_t;
+}
+
+QVector<InfNet> Grammar::inf() const
+{
+    return m_inf;
+}
+
 Grammar::Grammar() :
     m_lr("ABBTTMMM"),
     m_rr({ "!B!","T+B","T","M","M*T","a","b","(B)" })
