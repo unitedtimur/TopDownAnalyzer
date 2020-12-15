@@ -8,7 +8,7 @@ int main(int argc, char *argv[])
     QTextStream cout(stdout);
     QTextStream cin(stdin);
 
-    cout << "Enter some shit: ";
+    cout << "Enter some shit: " << flush;
 
     const QString line = cin.readLine();
 
