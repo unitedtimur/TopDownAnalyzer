@@ -21,13 +21,13 @@ QVector<qint32> Translator::translation(const QString &in)
     qint32 n = in.length();
     qint32 i = 0;
 
-    m_s = QChar('q');
+    m_condition = QChar('q');
     m_y.isTerm = 0;
     m_y.symbol = static_cast<Translator::byte>(m_s.toLatin1());
     m_l2.push(m_y);
 
     while (isNotEnd) {
-        switch (m_s.toLatin1()) {
+        switch (m_condition.toLatin1()) {
         case 't': {
             while (!m_result.empty()) {
                 result.push_back(m_result.top());
@@ -52,20 +52,20 @@ QVector<qint32> Translator::translation(const QString &in)
                         // Формирование результата
                         if (m_l2.empty()) {
                             step3();
-                            m_s = QChar('t');
+                            m_condition = QChar('t');
                         } else {
                             // Шаг 3
-                            m_s = QChar('b');
+                            m_condition = QChar('b');
                         }
                     } else {
                         // Шаг 3
                         if (m_l2.empty()) {
-                            m_s = QChar('b');
+                            m_condition = QChar('b');
                         }
                     }
                 } else {
                     // Шаг 4
-                    m_s = QChar('b');
+                    m_condition = QChar('b');
                 }
             }
         }
@@ -82,12 +82,12 @@ QVector<qint32> Translator::translation(const QString &in)
                 if (m_x.numberAlternative < m_x.countAlternative) {
                     step6a();
 
-                    m_s = QChar('q');
+                    m_condition = QChar('q');
                 } else {
                     if (m_x.symbol == m_s && i == 0) {
                         isNotEnd = false;
 
-                        qDebug() << "залупа";
+                        return { -1 };
                     } else {
                         step6v();
                     }
@@ -140,14 +140,14 @@ void Translator::pushL2_RR(const qint32 &rule)
     for (qint32 i = 0; i < length; ++i) {
         // Заполнение элемента стека L2
         m_y.symbol = static_cast<Translator::byte>(m_grammar.rr()
-                                                   .at(rule)
-                                                   .at(length - i - 1)
+                                                   [rule]
+                                                   [length - i - 1]
                                                    .toLatin1()
                                                    );
 
         m_y.isTerm = static_cast<Translator::byte>(findNet(m_grammar.rr()
-                                                           .at(rule)
-                                                           .at(length - i - 1)
+                                                           [rule]
+                                                           [length - i - 1]
                                                            ) == -1);
 
         m_l2.push(m_y);

@@ -5,8 +5,11 @@
 
 struct InfNet final
 {
+    // Нетерминал
     QChar net;
+    // Количество альтернатив
     int countAlternative;
+    // Номер первой альтернативы
     int firstNumberAlternative;
 };
 

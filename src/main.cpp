@@ -21,10 +21,14 @@ int main(int argc, char *argv[])
     Translator translator;
     const auto result = translator.translation(example);
 
-    for (const auto &it : result)
-        cout << it + " " ;
+    if (result.at(0) != -1) {
+        for (const auto &it : result)
+            cout << QString::number(it) + " ";
 
-    cout << endl;
+        cout << endl;
+    } else {
+        cout << QString("Fatal error! " + QString::fromUtf8(__FUNCTION__ )) << flush;
+    }
 
     return a.exec();
 }
