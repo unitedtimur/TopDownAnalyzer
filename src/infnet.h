@@ -5,9 +5,12 @@
 
 struct InfNet final
 {
-    QChar m_net;
-    int m_countAlternative;
-    int m_firstNumberAlternative;
+    // Нетерминал
+    QChar net;
+    // Количество альтернатив
+    int countAlternative;
+    // Номер первой альтернативы
+    int firstNumberAlternative;
 };
 
 #endif // INFNET_H
