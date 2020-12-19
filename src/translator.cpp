@@ -12,9 +12,9 @@ QVector<qint32> Translator::translation(const QString &in)
 {
     QVector<qint32> result;
 
-    m_l1 = std::stack<Translator::elementL1>();
-    m_l2 = std::stack<Translator::elementL2>();
-    m_result = std::stack<qint32>();
+    m_l1 = QStack<Translator::elementL1>();
+    m_l2 = QStack<Translator::elementL2>();
+    m_result = QStack<qint32>();
 
     bool isNotEnd = true;
 
