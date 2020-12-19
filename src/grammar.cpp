@@ -37,9 +37,10 @@ QVector<InfNet> Grammar::inf() const
     return m_inf;
 }
 
+// Терминалы: (, ), !, a, b
 Grammar::Grammar() :
-    m_lr("ABBTTMMM"),
-    m_rr({ "!B!","T+B","T","M","M*T","a","b","(B)" })
+    m_lr("ABBTTMMM"), // Нетерминалы
+    m_rr({ "!B!","T+B","T","M","M*T","a","b","(B)" }) // Правила
 {
     QVector<QChar> statusSymbols(256, 0);
 

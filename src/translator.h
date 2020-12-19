@@ -1,7 +1,7 @@
 #ifndef TRANSLATOR_H
 #define TRANSLATOR_H
 
-#include <stack>
+#include <QStack>
 #include "grammar.h"
 
 class Translator
@@ -58,14 +58,14 @@ private:
     const Grammar &m_grammar;
 
     // Стеки и элементы
-    std::stack<elementL1> m_l1;
-    std::stack<elementL2> m_l2;
+    QStack<elementL1> m_l1;
+    QStack<elementL2> m_l2;
 
     elementL1 m_x;
     elementL2 m_y;
 
     // Результат распознования
-    std::stack<qint32> m_result;
+    QStack<qint32> m_result;
 
     // Состояние алгоритма (q, b, t)
     QChar m_condition;
